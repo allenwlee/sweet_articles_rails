@@ -1,0 +1,16 @@
+<%= form_for @link, :html => {:'data-type' => 'json'}, :remote => true, :url => {:action => "create", :controller => "links"} do |f| %>
+  <%= f.text_field :url, placeholder: "something" %>
+  <%= f.submit "Generate Link" %>
+<% end %>
+
+
+<p> </p>
+
+<script type="text/javascript">
+
+$('#new_link').bind('ajax:success', function(r, d, x){
+  debugger
+});
+
+
+</script>

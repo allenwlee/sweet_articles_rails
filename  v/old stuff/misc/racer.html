@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <style type='text/css'>
+    .active {
+      color: white;
+      background-color: black;
+    }
+  body {
+      font-size: 50px;
+    }
+  </style>
+
+</head>
+<body>
+  <table>
+    <tr class='player1-board'>
+      <td class='active'>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+    <tr class='player2-board'>
+      <td class='active'>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>8</td>
+      <td>9</td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
+
+<script>
+
+  function Player(id) {
+    this.id       = id;
+    this.position = 1;
+  }
+
+  Player.prototype.advance = function() {
+    this.position ++;
+  };
+
+  function Game(player1, player2) {
+    this.player1    = player1;
+    this.player2    = player2;
+    this.startTime  = $.now();
+    this.boardSize  = 10;
+    this.gameTime   = null;
+    this.winner     = null;
+  }
+
+  Game.prototype.finished = function() {
+    if(game.player1.position == game.boardSize || game.player2.position == game.boardSize){
+      game.gameTime = $.now() - game.startTime; 
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  Game.prototype.updateBoard = function() {
+    $("td").removeClass("active");
+    $(".player1-board td:nth-child(" +player1.position+ ")").addClass("active");
+    $(".player2-board td:nth-child(" +player2.position+ ")").addClass("active");
+  }
+
+  Game.prototype.onKeyUp = function(event) {
+    if (game.finished() == true){
+      
+    } else {
+      if(event.keyCode == 65){
+        player1.advance();
+        game.updateBoard();
+
+        if(game.finished() == true){
+          game.winner = player1;
+          alert("player 1 wins!!!!!!!!");
+        }
+      }
+      else if(event.keyCode == 76){
+        player2.advance();
+        game.updateBoard();
+        if(game.finished() == true){
+          game.winner = player2;
+          alert("player 2 wins!!!!!!!!");
+        }
+      }
+    }
+
+  }
+
+  jQuery(document).ready(function($) {
+      player1 = new Player(1); //these need to be real IDs 
+      player2 = new Player(2);
+      game = new Game(player1, player2);
+      $(document).on('keyup', game.onKeyUp);
+  });
+
+  // var racer = Racer.init(['player1', 'player2']);
+  // racer.advance_player('player1', 10);
+  // $(document).on('keyup', function(e) {
+  // });
+</script>

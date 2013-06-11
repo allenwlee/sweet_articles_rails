@@ -1,0 +1,6 @@
+<h1>Links#show</h1>
+<h2>Your Short Link:</h2>
+<% the_link = request.host_with_port + '/' + @link.short_url %>
+<p><%= link_to the_link, the_link %></p>
+<h2>Your Full Form Link:</h2>
+<p><%=@link.url%></p>

@@ -1,0 +1,52 @@
+<%= form_tag do %>
+  <div>
+    <span>You are watching the </span>
+    <%= select_tag( :sort,
+                    options_for_select([["most popular", "most_popular"],
+                                        ["most discussed", "most_discussed"],
+                                        ["most responded", "most_responded"],
+                                        ["most subscribed", "most_subscribed"],
+                                        ["top rated", "top_rated"],
+                                        ["top favorited", "top_favorites"],]),
+                    { :class => "sort" }) %>
+    <%= select_tag( :category,
+                    options_for_select([["of all", ""],
+                                        ["music", "_Music"],
+                                        ["news", "_News"],
+                                        ["entertainment", "_Entertainment"]]),
+                    { :class => "category" }) %>
+    <span> videos from </span><br />
+    <%= select_tag( :time, 
+                    options_for_select([["today", "today"],
+                                        ["this week", "this_week"],
+                                        ["this month", "this_month"],
+                                        ["all time", "all_time"]]),
+                    { :class => "time" }) %><br />
+    <span> for Uganda.</span>
+  </div>
+<% end %>
+
+
+
+
+
+<!-- <h3>This div.bbq widget has id "bbq1"</h3>
+
+<div class="bbq" id="bbq1">
+  <div class="bbq-nav bbq-nav-top">
+    <a href="#burger.html">Burgers</a> |
+    <a href="#chicken.html">Chicken</a> |
+    <a href="#kebabs.html">Kebabs</a>
+  </div>
+</div>
+
+<h3>This div.bbq widget has id "bbq2"</h3>
+
+<div class="bbq" id="bbq2">
+  <div class="bbq-nav bbq-nav-top">
+    <a href="#kielbasa.html">Kielbasa</a> |
+    <a href="#ribs.html">Ribs</a> |
+    <a href="#steak.html">Steak</a>
+  </div>
+</div>
+ -->

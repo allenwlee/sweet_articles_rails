@@ -1,0 +1,14 @@
+require 'test_helper'
+
+class LinksControllerTest < ActionController::TestCase
+  test "should get show" do
+    get :show
+    assert_response :success
+  end
+
+  test "should get redirect" do
+    get :redirect
+    assert_response :success
+  end
+
+end
