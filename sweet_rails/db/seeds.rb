@@ -19,7 +19,7 @@ Article.all.each do |article|
   end
 end
 
-Article.all.each do |a|
-  cat = Category.find_or_create_by_name(a.read_attribute(:category))
-  a.update_attributes(category_id: cat.id)
-end
+  Article.all.each do |a|
+    cat = Category.find_or_create_by_name(a.read_attribute(:category))
+    a.update_attributes(category_id: cat.id)
+  end
